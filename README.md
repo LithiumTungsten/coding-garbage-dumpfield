@@ -1,7 +1,7 @@
-# cs50 study log
+#Escaping from BCEM in Progress
 
 
-It's my sketchy cs50 study log. 
+
 
 It's my first steps of escaping from BCEM 
 

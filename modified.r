@@ -21,10 +21,11 @@ rt=avereps(rt)
 
 #just logify
 
-rt=log2(rt+1)     #rt最大值大于30则取log
+rt=log2(rt+1)     #
 
 #使用normalizeBetweenArrays进行矫正，矫正后赋值为rt1
 #rt1=normalizeBetweenArrays(as.matrix(rt))
+#but it can be skipped if you already normalized your stuff.
 
 #normalized/unormalized
 cols=rainbow(ncol(rt)) ###针对24个样本，设置颜色，整体呈现彩虹色
@@ -50,7 +51,7 @@ write.table(rt2,file="norexp.txt",sep="\t",quote=F,col.names = F)
 data=rt
 #data=rt
 
-#控制组的数量，因为前面已经把正常组提到了最前面几列（一定要根据自己的数据集情况操作），所以直接提就行了
+#控制组的数量，因为前面已经把正常组提到了最前面几列，所以直接提就行了
 afcon=14
 conData=data[,as.vector(colnames(data)[1:afcon])]
 aftreat=afcon+1
@@ -118,7 +119,7 @@ p = ggplot(Diff, aes(logFC, -log10(P.Value)))+
   geom_hline(aes(yintercept=-log10(adjP)), colour="gray", linetype="twodash",size=1)+
   geom_vline(aes(xintercept=aflogFC), colour="gray", linetype="twodash",size=1)+
   geom_vline(aes(xintercept=-aflogFC), colour="gray", linetype="twodash",size=1)
-#添加标记，按照
+#If value is above decalred paras, genes will be highlighted  
 point.Pvalue=0.0001
 point.logFc=3.8
 #继续绘制
